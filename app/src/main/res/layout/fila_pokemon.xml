@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <GridLayout
+        android:id="@+id/grdl"
+        android:background="@color/type_water"
+        android:layout_marginBottom="10dp"
+        android:rowCount="2"
+        android:columnCount="5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/pkm_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="2"
+            android:text="#001"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"></TextView>
+
+        <TextView
+            android:id="@+id/pkm_nom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="6"
+            android:text="Bulbasaur"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"></TextView>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:layout_rowWeight="1"></View>
+
+        <ImageButton
+            android:id="@+id/pkm_fav"
+            android:background="@null"
+            android:src="@drawable/unfav_icon"
+            android:scaleType="centerCrop"
+            android:layout_margin="5dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_columnWeight="1"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:layout_rowWeight="1"></ImageButton>
+
+        <ImageView
+            android:id="@+id/pkm_icon"
+            android:background="@drawable/pokemon_icon_background"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_column="4"
+            android:layout_columnWeight="4"
+            android:layout_row="0"
+            android:layout_rowWeight="1"
+            android:layout_rowSpan="2"></ImageView>
+
+        <LinearLayout
+            android:id="@+id/pkm_types"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnSpan="4"
+            android:layout_columnWeight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/pkm_type1"
+                android:background="@drawable/type_box"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GRASS"
+                android:layout_margin="5dp"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/pkm_type2"
+                android:background="@drawable/type_box"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GRASS"
+                android:layout_margin="5dp"
+                ></TextView>
+        </LinearLayout>
+
+    </GridLayout>
+
+</LinearLayout>

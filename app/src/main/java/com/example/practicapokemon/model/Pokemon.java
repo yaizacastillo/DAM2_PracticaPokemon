@@ -5,25 +5,29 @@ import java.util.List;
 public class Pokemon {
     private int id;
     private String nom;
-    private List<Tipus> tipus;
+    private List<Type> types;
     private boolean isFav;
     private String desc;
     private float height;
     private float weight;
     private List<Ability> abilities;
     private BaseStats baseStats;
+    private String imageURL;
+    private List<Pokemon> evolutions;
     private static List<Pokemon> pokemonList;
 
-    public Pokemon(int id, String nom, List<Tipus> tipus, boolean isFav, String desc, float height, float weight, List<Ability> abilities, BaseStats baseStats) {
+    public Pokemon(int id, String nom, List<Type> types, boolean isFav, String desc, float height, float weight, List<Ability> abilities, BaseStats baseStats, String imageURL, List<Pokemon> evolutions) {
         setId(id);
         setNom(nom);
-        setTipus(tipus);
+        setTipus(types);
         setFav(isFav);
         setDesc(desc);
         setHeight(height);
         setWeight(weight);
         setAbilities(abilities);
         setBaseStats(baseStats);
+        setImageURL(imageURL);
+        setEvolutions(evolutions);
     }
 
     public int getId() {
@@ -42,12 +46,20 @@ public class Pokemon {
         this.nom = nom;
     }
 
-    public List<Tipus> getTipus() {
-        return tipus;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setTipus(List<Tipus> tipus) {
-        this.tipus = tipus;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public List<Type> getTipus() {
+        return types;
+    }
+
+    public void setTipus(List<Type> types) {
+        this.types = types;
     }
 
     public boolean isFav() {
@@ -98,11 +110,28 @@ public class Pokemon {
         this.baseStats = baseStats;
     }
 
+    public List<Pokemon> getEvolutions() {
+        return evolutions;
+    }
+
+    public void setEvolutions(List<Pokemon> evolutions) {
+        this.evolutions = evolutions;
+    }
+
     public static List<Pokemon> getPokemonList() {
         return pokemonList;
     }
 
     public static void setPokemonList(List<Pokemon> pokemonList) {
         Pokemon.pokemonList = pokemonList;
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", types=" + types +
+                '}';
     }
 }
