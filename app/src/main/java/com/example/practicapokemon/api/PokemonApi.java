@@ -32,7 +32,7 @@ public class PokemonApi {
     public static List<Pokemon> getPokemonList(){
         List<Pokemon> list = null;
 
-        String jsonParent = NetworkUtils.getJSon("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0");
+        String jsonParent = NetworkUtils.getJSon("https://pokeapi.co/api/v2/pokemon?limit=10&offset=0");
 
         try{
             list = new ArrayList<Pokemon>();
@@ -45,10 +45,9 @@ public class PokemonApi {
                 String jsonPokemon = NetworkUtils.getJSon("https://pokeapi.co/api/v2/pokemon/" + namePokemon);
 
                 JSONObject pokemonObj = new JSONObject(jsonPokemon);
+                //id
                 int id = pokemonObj.getInt("id");
-                String nom = pokemonObj.getString("name");
-                JSONObject pokemonSprites = pokemonObj.getJSONObject("sprites");
-                String url = pokemonSprites.getString("front_default");
+                //tipus
                 JSONArray types = pokemonObj.getJSONArray("types");
                 List<Type> pokemonTypes = new ArrayList<Type>();
                 for (int j = 0; j < types.length(); j++) {
@@ -58,7 +57,24 @@ public class PokemonApi {
                     int typeId = Integer.parseInt(typeUrl.substring(31,typeUrl.length()-1));
                     pokemonTypes.add(Type.getType(typeId));
                 }
-                Pokemon p = new Pokemon(id, nom, pokemonTypes, false, "", 0f, 0f, null, null, url, null);
+                //descripcio
+                String jsonSpecie = NetworkUtils.getJSon("https://pokeapi.co/api/v2/pokemon-species/"+id);
+                JSONObject speciesObj = new JSONObject(jsonSpecie);
+                JSONArray textEntriesArray = speciesObj.getJSONArray("flavor_text_entries");
+                JSONObject entry = textEntriesArray.getJSONObject(textEntriesArray.length()-1);
+                String desc = entry.getString("flavor_text");
+                //altura
+                Float height = pokemonObj.getInt("height")/10f;
+                //pes
+                Float weight = pokemonObj.getInt("weight")/10f;
+                //url
+                JSONObject pokemonSprites = pokemonObj.getJSONObject("sprites");
+                String url = pokemonSprites.getString("front_default");
+                //evolucions
+                //JSONObject evolutionChainObj = speciesObj.getJSONObject("evolution_chain");
+                //String evolutionChainUrl = evolutionChainObj.getString("url");
+
+                Pokemon p = new Pokemon(id, namePokemon, pokemonTypes, false, desc, height, weight, null, null, url, null);
                 list.add(p);
                 Log.e("XXX", "Cargat pokemon: " + p);
             }

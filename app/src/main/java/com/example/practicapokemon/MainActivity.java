@@ -20,6 +20,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import java.io.File;
 import java.util.List;
 
 
@@ -66,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
         rlyDownload.setVisibility(View.VISIBLE);
 
+        //File jsonFolder = new File(this.getFilesDir(), "jsons");
+        //jsonFolder.mkdirs();
+
         //Agafar tipus
         viewModel.getTypesList();
         viewModel.typesList.observe(this, new Observer<List<Type>>() {
@@ -75,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("XXX", "Llista de tipus = " + l);
             }
         });
+
+        /*
+            File jsonFolder = new File (this.getFilesDir(), "jsons");
+            viewModel.descarregaPokemons(jsonFolder);
+         */
 
         //Agafar pokemons
         viewModel.getPokemonList();

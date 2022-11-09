@@ -146,8 +146,6 @@ public class PokemonsAdapter extends RecyclerView.Adapter<PokemonsAdapter.ViewHo
             }
         });
 
-
-
     }
 
     @Override

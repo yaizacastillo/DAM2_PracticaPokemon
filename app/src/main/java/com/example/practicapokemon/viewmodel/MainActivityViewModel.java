@@ -34,6 +34,16 @@ public class MainActivityViewModel extends ViewModel {
         }
     }*/
 
+    /*
+    public void descarregaPokemons(File folder){
+        Observable.fromCallable(() -> {
+            String jsonParent = NetworkUtils.getJSon(jsonFolder, "pokemons.json", "https://pokeapi.co/api/v2/pokemon?limit=30&offset=0");
+
+            return 1;
+        }).subscribeOn(Schedulers.io()).subscribe();
+    }
+     */
+
     public MutableLiveData<List<Pokemon>> pokemonList;
     public MutableLiveData<List<Type>> typesList;
 
